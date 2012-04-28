@@ -1,0 +1,78 @@
+[core]
+	excludesfile = /Users/slipp/".git_excludes"
+	# ‘tabwidth=13’ because if we show it as a retarded tab size that we would never use, we can be sure that tab indenting isn't being used incorrectly*.
+	# 	* incorrectly (n): Self-centered, stupid, pointless, hanging, retardfectionist.
+	# 		_I had to line up all the charactamers because I'm a retardfectionist._
+	# 		_I tabbed things incorrectly because I was bored at work, and I wanted the code to look prettier so the boss wouldn't catch me Facebooking._
+	# @todo: Don't be so offensive, Slipp. It's not like non-representational data is the end of the world. oh wait…
+	whitespace = -blank-at-eol, tabwidth=13
+	# defaults: whitespace = blank-at-eol, space-before-tab, -indent-with-non-tab, -tab-in-indent, blank-at-eof, trailing-space, -cr-at-eol, tabwidth=8
+[push]
+	default = matching
+[user]
+	name = Slipp Douglas
+	email = slipp+git@citelighter.com
+
+
+# AFAIK, there is no way to have non-specified authors left as-is, therefore, this setting is probably best set per-repository, unless one deals with a lot of SVN repos from the same group of authors.
+[svn]
+	authorsfile = /Users/slipp/".git-svn_authors"
+
+
+[diff]
+	tool = opendiff
+[difftool]
+	prompt = false
+
+
+# just a little more info from these commands
+[rebase]
+	stat = true
+[log]
+	decorate = full
+
+
+# Handy Variants/Macros
+[alias]
+	lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+	lg = !"git lg1"
+	snatch = cherry-pick # a more fitting name, considering how sexy cherry-pick is (and is easier to type)
+	cherry-pop = cherry-pick # couldn't resist (and to exacerbate the problem with autocompleting ‘cherry-pick’)
+	cunt = cherry-pick # might as well
+	word-diff = diff --minimal --word-diff=plain
+	char-diff = diff --minimal --word-diff-regex='.'
+
+
+
+# I found myself occasionally confused by the command-line colorings, so I tweaked the colors and styles so they're more distinct and so that certain colors are only used for specific purposes.
+# @note: YMMV; I use terminal colorings of white text on black background (with distinct shades of gray for black/dark-gray ('0;30m'), bright-black/mid-gray ('1;30m'), and non-bright-white/light-gray ('0;37m')).
+[color]
+	ui = auto # Git w/o any color is cruel and unusual punishment
+[color "branch"]
+	current = bold reverse red
+	local = reverse green
+	remote = reverse cyan
+	plain = reverse white
+[color "diff"]
+	plain = white
+	meta = bold blue black
+	frag = bold yellow black
+	func = cyan
+	old = red
+	new = green
+	commit = ul yellow
+	whitespace = reverse black
+[color "decorate"]
+	branch = reverse green
+	remoteBranch = reverse cyan
+	tag = reverse yellow
+	stash = reverse yellow
+	HEAD = bold reverse red
+[color "status"]
+	header = dim white black
+	updated = bold yellow # AKA added
+	changed = bold magenta
+	untracked = bold cyan
+	unmerged = bold blue
+	nobranch = bold reverse blink red

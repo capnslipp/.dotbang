@@ -1,0 +1,28 @@
+# Global Git Excludes
+
+# Mac OS X filesystem meta-files
+.DS_Store
+
+# Git-SVN empty directory placeholder
+# 	used by 'svn-remote.<name>.preserve-empty-dirs' with 'svn-remote.<name>.placeholder-filename = .git-emptydir'
+.git-emptydir
+
+# Xcode local, user-specific files
+# 	(These really should never be checked into source for any project anywhere; case in point, most of them contain the username somewhere in the '*' part or in the preceding path.)
+*.mode1v3
+*.pbxuser
+*.perspectivev3
+*.xcuserdatad
+*.xcworkspace
+
+# Emacs backup files
+*~
+
+# various other backup files
+# 	(Rarely checked in, but can always be included in a repo with a ‘!*.bak*’ un-ignore, of course.)
+*.bak*
+
+# build tool object files
+#	(Again, rarely in a repo, but can certainly be overridden.)
+*.obj
+*.o
