@@ -1,0 +1,12 @@
+--- 
+blogs: 
+- user: user
+  extra_headers: 
+    mt_convert_breaks: markdown
+  password: password
+  url: url
+  blog_id: blog_id
+exclude: !ruby/regexp /tmp$|CVS|TAGS|\.(svn|git|DS_Store)/
+signing_cert_file: ~/.gem/gem-public_cert.pem
+publish_on_announce: true
+signing_key_file: ~/.gem/gem-private_key.pem
