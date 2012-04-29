@@ -57,16 +57,12 @@ And clone that repository into a secondary repository that you'll use the files 
 
 ~~~ bash
 git clone -o 'intermediate' ~/.config_intermediate.git ~/.config
-~~~
 
-To symlink everything, up you can use something like this, although I admit this find/exec needs quite a bit of work:
-
-~~~ bash
-# back-up first
+# now, back-up your dotfiles
 
 cd ~/.config
 
-# not trust-worthy:
+# not trust-worthy (I admit, it needs quite a bit of work):
 find . -depth 1 ! -name 'README.md' -and ! -name '.git' -and ! -name '.gitignore' \
 	-exec mv ~/'{}' ~/.config/'' \
 	-exec ln -s ~/.config/'{}' ~/'{}' \;
