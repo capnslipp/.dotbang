@@ -63,7 +63,7 @@ find . -depth 1 ! -name 'README.md' -and ! -name '.git' -and ! -name '.gitignore
 	-exec ln -s ~/.config/'{}' ~/'{}' \;
 ~~~
 
-Last, back in the intermediate repository, set up a git update hook to prevent the local branch(es) from ever being pushed in by dropping this script in as `.git/hooks/update`:
+Last, back in the intermediate repository, set up a git update hook to prevent the local branch(es) from ever being pushed in by dropping this script in as `hooks/update`:
 
 ~~~ bash
 #!/bin/sh
@@ -111,6 +111,8 @@ esac
 # --- Finished
 exit 0
 ~~~
+
+And set it to be executable: `chmod 755 hooks/update` _(otherwise, git will silently skip running the script)_.
 
 This way, if you ever accidentally `git push --all` from your `.config` repo, you'll only push to the intermediate repo (not to the wild wild web), and it'll reject any `*local*` branches (with a nice error message). The downside is you do have to cd into your intermediate repo in order to push to GitHub.
 
