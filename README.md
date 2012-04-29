@@ -41,3 +41,19 @@ Then, down the road, if you see someone else's changes that you want to pull int
        then stage and commit.
 4. Then push that tish!  
    _(Hoarding is douchbaggery.)_
+
+
+## Local-Only
+
+If you want to have local-machine only changes stored in this git repo (doing otherwise will probably be a huge pain, since private keys, passwords, e-mails, and other settings in config files are not unusual), you can easily create a branch that will be darn-hard to push to the wrong place.
+
+Given a local-only branch with a name in the format of `«your username»/local/«local-machine name»`, a good .gitconfig setup would be:
+
+~~~ ini
+[branch "«your username»/local/«local-machine name»"]
+	remote = .
+	merge = «your username»/main
+	rebase = true
+~~~
+
+As a bonus, this works nicely with putting your local-only changes on top of any new `«your username»/main` changes; just `git pull` when on the local-machine branch to pull from your main branch. And if you encounter rebase conflicts when pulling, a `git checkout --theirs «conflicting file name»` will ensure you keep your local variant _(of course, you can revert to the main branch's variant with `--ours` instead of `--theirs`, or you may actually want to hand-merge the changes, of course)_.
