@@ -56,7 +56,7 @@ git clone --bare git@github.com:«your username»/.config.git ~/.config_intermed
 And clone that repository into a secondary repository that you'll use the files directly out of (I symlink to these files):
 
 ~~~ bash
-git clone -o 'intermediate' ~/.config_pristine.git ~/.config
+git clone -o 'intermediate' ~/.config_intermediate.git ~/.config
 cd ~/.config
 find . -depth 1 ! -name 'README.md' -and ! -name '.git' -and ! -name '.gitignore' \
 	-exec mv ~/'{}' ~/.config/'' \
