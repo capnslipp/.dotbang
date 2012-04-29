@@ -45,9 +45,13 @@ Then, down the road, if you see someone else's changes that you want to pull int
 
 ## Local-Only
 
-If you want to have local-machine only changes stored in this git repo (doing otherwise will probably be a huge pain, since private keys, passwords, e-mails, and other settings in config files are not unusual), you can easily create a branch that will be darn-hard to push to the wrong place.
+If you want to have local-machine only changes stored in this git repo (doing otherwise will probably be a huge pain, since private keys, passwords, e-mails, and other settings in config files are not unusual), **you should be careful**.
 
-Given a local-only branch with a name in the format of `«your username»/local/«local-machine name»`, a good .gitconfig setup would be:
+It's probably best to git clone your GitHub-hosted `.config` into a “pristine” repository (e.g. `~/.config_pristine`), then clone that repository into a secondary repository that you'll use the files directly out of (I symlink to these).
+
+This way, if you ever accidentally `git push --all` from your `.config` repo, you'll only push to the pristine repo, not to the wild wild web. The downside is you do have to cd into your pristine repo in order to push to GitHub. I haven't yet found a good way to ensure certain branches will never ever ever be pushed.
+
+If you want to make it easy to keep your local-only changes on top of any new `«your username»/main` changes, you can set up your .git/config like this:
 
 ~~~ ini
 [branch "«your username»/local/«local-machine name»"]
@@ -56,4 +60,4 @@ Given a local-only branch with a name in the format of `«your username»/local/
 	rebase = true
 ~~~
 
-As a bonus, this works nicely with putting your local-only changes on top of any new `«your username»/main` changes; just `git pull` when on the local-machine branch to pull from your main branch. And if you encounter rebase conflicts when pulling, a `git checkout --theirs «conflicting file name»` will ensure you keep your local variant _(of course, you can revert to the main branch's variant with `--ours` instead of `--theirs`, or you may actually want to hand-merge the changes, of course)_.
+Now just `git pull` when on the local-machine branch to pull from your main branch. And if you encounter rebase conflicts when pulling, a `git checkout --theirs «conflicting file name»` will ensure you keep your local variant _(of course, you can revert to the main branch's variant with `--ours` instead of `--theirs`, or you may actually want to hand-merge the changes, of course)_.
