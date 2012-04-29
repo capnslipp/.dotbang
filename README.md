@@ -123,4 +123,4 @@ If you want to make it easy to keep your local-only changes on top of any new `�
 	rebase = true
 ~~~
 
-Now just `git pull` when on the local-machine branch to pull from your main branch. And if you encounter rebase conflicts when pulling, a `git checkout --theirs «conflicting file name»` will ensure you keep your local variant _(of course, you can revert to the main branch's variant with `--ours` instead of `--theirs`, or you may actually want to hand-merge the changes, of course)_.
+Now just `git pull` when on the local-machine branch to pull from your main branch. And if you encounter rebase conflicts when pulling, a `git checkout --theirs «conflicting file name»` will ensure you keep your local variant _(of course, you can revert to the main branch's variant with `--ours` instead of `--theirs`, or you may actually want to hand-merge the changes)_.
