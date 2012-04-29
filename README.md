@@ -29,7 +29,7 @@ If you would like to follow this system, just follow these simple steps:
 Then, down the road, if you see someone else's changes that you want to pull into your repo, you can:
 
 1. Make sure you have their repo set up as a remote. If not, run:  
-   `git remote add «their username» git://github.com/«their username»/.config.git`
+   `git remote add «their username» git://github.com/«their username»/.config.git` _(notice the read-only URL; this is important for safety, see below)_
 2. Also, if you haven't already, fetch their changes _(and the changes of anybody they admire enough to have grabbed their branch(es))_ into your repo:  
    `git fetch «their username»`
 3. Cherry-pick the commit(s) or checkout the file(s) you like:
@@ -43,13 +43,76 @@ Then, down the road, if you see someone else's changes that you want to pull int
    _(Hoarding is douchbaggery.)_
 
 
-## Local-Only
+## Local-Only?
 
 If you want to have local-machine only changes stored in this git repo (doing otherwise will probably be a huge pain, since private keys, passwords, e-mails, and other settings in config files are not unusual), **you should be careful**.
 
-It's probably best to git clone your GitHub-hosted `.config` into a “pristine” repository (e.g. `~/.config_pristine`), then clone that repository into a secondary repository that you'll use the files directly out of (I symlink to these).
+It's probably best to git clone your GitHub-hosted `.config` into a intermediate repository:
 
-This way, if you ever accidentally `git push --all` from your `.config` repo, you'll only push to the pristine repo, not to the wild wild web. The downside is you do have to cd into your pristine repo in order to push to GitHub. I haven't yet found a good way to ensure certain branches will never ever ever be pushed.
+~~~ bash
+git clone --bare git@github.com:«your username»/.config.git ~/.config_intermediate.git
+~~~
+
+And clone that repository into a secondary repository that you'll use the files directly out of (I symlink to these files):
+
+~~~ bash
+git clone -o 'intermediate' ~/.config_pristine.git ~/.config
+cd ~/.config
+find . -depth 1 ! -name 'README.md' -and ! -name '.git' -and ! -name '.gitignore' \
+	-exec mv ~/'{}' ~/.config/'' \
+	-exec ln -s ~/.config/'{}' ~/'{}' \;
+~~~
+
+Last, back in the intermediate repository, set up a git update hook to prevent the local branch(es) from ever being pushed in by dropping this script in as `.git/hooks/update`:
+
+~~~ bash
+#!/bin/sh
+#
+# Hook script that blocks creationg of branches with the form '*/local/*', 'local/*', '*/local', or just 'local'.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "Usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero="0000000000000000000000000000000000000000"
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/heads/*/local/*,commit|refs/heads/local/*,commit|refs/heads/*/local,commit|refs/heads/local,commit)
+		# 'local' branch
+		if [ "$oldrev" = "$zero" ]; then
+			echo "*** Creation of branch '$refname' denied;\n    Branches with 'local' for part or all of the branch name are not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+esac
+
+# --- Finished
+exit 0
+~~~
+
+This way, if you ever accidentally `git push --all` from your `.config` repo, you'll only push to the intermediate repo (not to the wild wild web), and it'll reject any `*local*` branches (with a nice error message). The downside is you do have to cd into your intermediate repo in order to push to GitHub.
 
 If you want to make it easy to keep your local-only changes on top of any new `«your username»/main` changes, you can set up your .git/config like this:
 
