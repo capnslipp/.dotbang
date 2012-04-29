@@ -1,5 +1,6 @@
 [core]
 	excludesfile = /Users/slipp/".git_excludes"
+	editor = mate -w
 	# ‘tabwidth=13’ because if we show it as a retarded tab size that we would never use, we can be sure that tab indenting isn't being used incorrectly*.
 	# 	* incorrectly (n): Self-centered, stupid, pointless, hanging, retardfectionist.
 	# 		_I had to line up all the charactamers because I'm a retardfectionist._
@@ -11,7 +12,7 @@
 	default = matching
 [user]
 	name = Slipp Douglas
-	email = slipp+git@citelighter.com
+	email = git@slippyd.com
 
 
 # AFAIK, there is no way to have non-specified authors left as-is, therefore, this setting is probably best set per-repository, unless one deals with a lot of SVN repos from the same group of authors.
