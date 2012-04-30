@@ -3,6 +3,18 @@
 This is a collection of the dotfiles I use on Mac OS X, Linux (primarily Debian and Ubuntu), and occasionally Cygwin on Windows.
 
 
+## So what?
+
+Fine, I'll cut to the chase. A lot of people out there do this. Some have even dotfile tools on GitHub to help keep local modifications and machine differences organized. I haven't gotten that far yet.
+
+However, there is a difference: **this isn't just a repo of my config files, _it's also a repo of everyone else's that I admire_**.
+
+This means that:
+
+* When **I** pull it down, I get all the stuff I might want to steal too _(rather than having to `git remote add …` each one on each machine)_.
+* When **you** pull it down, you get the stuff I like as well, as remote branches. It's up to you if you want to pull this stuff in or not; if you fork the repo, you can keep what you also like, delete what you don't, and pull in branches for people _you_ admire.
+
+
 ## Repo Organization
 
 The setup of this repository is a little different than how Git repos normally go; there is no `master` branch, and most branches are their own line of code, with little-to-no branching or merging.
