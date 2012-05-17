@@ -76,7 +76,7 @@ cd ~/.config
 
 # not trust-worthy (I admit, it needs quite a bit of work):
 find . -depth 1 ! -name 'README.md' -and ! -name '.git' -and ! -name '.gitignore' \
-	-exec mv ~/'{}' ~/.config/'' \
+	-exec mv ~/'{}' ~/.config/'' \; \
 	-exec ln -s ~/.config/'{}' ~/'{}' \;
 ~~~
 
