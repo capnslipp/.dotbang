@@ -19,7 +19,7 @@ This means that:
 
 The setup of this repository is a little different than how Git repos normally go; there is no `master` branch, and most branches are their own line of code, with little-to-no branching or merging.
 
-Instead, branches are named after the GitHub user the dotfiles setup belongs to. I'm a big fan of Git's ability to folder up branches, so the main branch for each user's repo is `«username»/main`. There may be additional branches from that user (e.g. `«username»/linux` or `«username»/cygwin-hacks`).
+Instead, branches are named after the GitHub user the dotfiles setup belongs to. I'm a big fan of Git's ability to folder up branches, so the main branch for each user's repo is `«GitHub username»/main`. There may be additional branches from that user (e.g. `«GitHub username»/linux` or `«GitHub username»/cygwin-hacks`).
 
 
 ## Clone Your Own
@@ -27,8 +27,8 @@ Instead, branches are named after the GitHub user the dotfiles setup belongs to.
 If you would like to follow this system, just follow these simple steps:
 
 1. Fork or clone someone else's `.dotbang` project. It doesn't really matter who; you might as well choose someone you admire.
-2. Create a new `«your username»/main` branch with the command:  
-   `git checkout --orphan «your username»/main`  
+2. Create a new `«your GitHub username»/main` branch with the command:  
+   `git checkout --orphan «your GitHub username»/main`  
    _This will ensure that your branch is completely independent, not branched off of anyone else's._
 3. Commit some files to form your first commit.
    You could include a bunch of what you're already using, or to get their current version of this readme, just:  
@@ -41,9 +41,9 @@ If you would like to follow this system, just follow these simple steps:
 Then, down the road, if you see someone else's changes that you want to pull into your repo, you can:
 
 1. Make sure you have their repo set up as a remote. If not, run:  
-   `git remote add «their username» git://github.com/«their username»/.dotbang.git` _(notice the read-only URL; this is important for safety, see below)_
+   `git remote add «their GitHub username» git://github.com/«their GitHub username»/.dotbang.git` _(notice the read-only URL; this is important for safety, see below)_
 2. Also, if you haven't already, fetch their changes _(and the changes of anybody they admire enough to have grabbed their branch(es))_ into your repo:  
-   `git fetch «their username»`
+   `git fetch «their GitHub username»`
 3. Cherry-pick the commit(s) or checkout the file(s) you like:
     1. To swipe commits:  
        `git cherry-pick «sha for their commit»`  
@@ -62,7 +62,7 @@ If you want to have local-machine only changes stored in this git repo (doing ot
 It's probably best to git clone your GitHub-hosted `.dotbang` into a intermediate repository:
 
 ~~~ bash
-git clone --bare git@github.com:«your username»/.dotbang.git ~/.dotbang_intermediate.git
+git clone --bare git@github.com:«your GitHub username»/.dotbang.git ~/.dotbang_intermediate.git
 ~~~
 
 And clone that repository into a secondary repository that you'll use the files directly out of (I symlink to these files):
@@ -133,12 +133,12 @@ And set it to be executable: `chmod 755 hooks/update` _(otherwise, git will sile
 
 This way, if you ever accidentally `git push --all` from your `.dotbang` repo, you'll only push to the intermediate repo (not to the wild wild web), and it'll reject any `*local*` branches (with a nice error message). The downside is you do have to cd into your intermediate repo in order to push to GitHub.
 
-If you want to make it easy to keep your local-only changes on top of any new `«your username»/main` changes, you can set up your .git/config like this:
+If you want to make it easy to keep your local-only changes on top of any new `«your GitHub username»/main` changes, you can set up your .git/config like this:
 
 ~~~ ini
-[branch "«your username»/local/«local-machine name»"]
+[branch "«your GitHub username»/local/«local-machine name»"]
 	remote = .
-	merge = «your username»/main
+	merge = «your GitHub username»/main
 	rebase = true
 ~~~
 
