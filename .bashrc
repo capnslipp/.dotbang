@@ -19,6 +19,10 @@ PATH=$PATH:"$HOME/.rvm/bin"
 PATH="/usr/local/sbin":$PATH
 PATH="/usr/local/bin":$PATH
 
+[[ $DEBUG_SHELL_LOADING ]] && echo '	'"Homebrew Auto-Completion"
+[[ -f `brew --prefix`/'etc/bash_completion' ]] &&
+	source `brew --prefix`/'etc/bash_completion'
+
 [[ $DEBUG_SHELL_LOADING ]] && echo '	'"User-level bins are the most important. No arguing with this; everyone has the right to fuck themselves."
 PATH="$HOME/bin":$PATH
 
