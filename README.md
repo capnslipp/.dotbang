@@ -73,20 +73,20 @@ git clone -o 'intermediate' ~/.dotbang_intermediate.git ~/.dotbang
 
 # now, back-up the dotfiles that already exit in .dotbang, just in case:
 find .dotbang -depth 1 ! -name 'README.md' ! -name '.git' ! -name '.gitignore' | sed 's/^.dotbang\///' | while read N; do
-    test -e ~/"$N" -a ! -L ~/"$N" && \
+    test -e ~/"$N" -a ! -L ~/"$N" &&
         cp -r ~/"$N" ~/"$N".dotbang-setup-bak
 done
 
 # and finally mv your dotfiles into .dotbang, and put symlinks in their place:
 cd ~/
 find .dotbang -depth 1 ! -name 'README.md' ! -name '.git' ! -name '.gitignore' | sed 's/^.dotbang\///' | while read N; do
-    test -e ~/"$N" -a ! -L ~/"$N" && \
-        echo "moving \"$N\" into .dotbang and symlinking to the new location" && \
-        rm -r .dotbang/"$N" && \
-        mv "$N" .dotbang/"$N" && \
+    test -e ~/"$N" -a ! -L ~/"$N" &&
+        echo "moving \"$N\" into .dotbang and symlinking to the new location" &&
+        rm -r .dotbang/"$N" &&
+        mv "$N" .dotbang/"$N" &&
         ln -s .dotbang/"$N" "$N"
-    test ! -e ~/"$N" -a ! -L ~/"$N" && \
-        echo "symlinking new-to-this-system \"$N\" into ~/" && \
+    test ! -e ~/"$N" -a ! -L ~/"$N" &&
+        echo "symlinking new-to-this-system \"$N\" into ~/" &&
         ln -s .dotbang/"$N" "$N"
 done
 # (P.S. May break shit if you have an unusual setup, or use cranky apps that distaste symlinks. Take care!)
