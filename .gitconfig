@@ -8,6 +8,7 @@
 	# @fixme: Don't be so offensive, Slipp. It's not like non-representational data is the end of the world.
 	whitespace = -blank-at-eol, tabwidth=13
 	# defaults: whitespace = blank-at-eol, space-before-tab, -indent-with-non-tab, -tab-in-indent, blank-at-eof, trailing-space, -cr-at-eol, tabwidth=8
+	quotepath = false
 [push]
 	default = matching
 [user]
