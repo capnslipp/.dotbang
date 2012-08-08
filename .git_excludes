@@ -20,7 +20,8 @@
 
 # various other backup files
 # 	(Rarely checked in, but can always be included in a repo with a ‘!*.bak*’ un-ignore, of course.)
-*.bak*
+*.*bak*
+.#*
 
 # build tool object files
 #	(Again, rarely in a repo, but can certainly be overridden.)
