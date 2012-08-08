@@ -5,7 +5,7 @@
 	# 	* incorrectly (n): Self-centered, stupid, pointless, hanging, retardfectionist.
 	# 		_I had to line up all the charactamers because I'm a retardfectionist._
 	# 		_I tabbed things incorrectly because I was bored at work, and I wanted the code to look prettier so the boss wouldn't catch me Facebooking._
-	# @todo: Don't be so offensive, Slipp. It's not like non-representational data is the end of the world. oh wait…
+	# @fixme: Don't be so offensive, Slipp. It's not like non-representational data is the end of the world.
 	whitespace = -blank-at-eol, tabwidth=13
 	# defaults: whitespace = blank-at-eol, space-before-tab, -indent-with-non-tab, -tab-in-indent, blank-at-eof, trailing-space, -cr-at-eol, tabwidth=8
 [push]
