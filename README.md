@@ -9,7 +9,7 @@ A lot of people out there do this. Some have even dotfile tools on GitHub to hel
 
 However, there is a difference that makes **.&middot;!** unique: **this .&middot;! repo here on GitHub isn't just a repo of my config files, _it's also a repo of everyone else's that I admire_**.
 
-**&there4;**,
+### &there4;,
 
 * When **I** pull down changes, I also get changes from admirees' repos that I might want to steal _(rather than having to `git remote add …` each one on each machine)_.
 * When **you** clone or pull changes from my repo, you also get the stuff I like (as remote branches). It's up to you if you want to pull this stuff in or not; if you fork the repo, you can keep what you also like, delete what you don't, and pull in branches for people _you_ admire.
@@ -151,6 +151,8 @@ If you want to make it easy to keep your local-only changes on top of any new `�
 [branch "«your GitHub username»/local/«local-machine name»"]
 	remote = .
 	merge = refs/heads/«your GitHub username»/main
+	# since this branch will never publicly shared or collaborated on between machines/accounts,
+	# 	rebase *should* make it easier to keep up-to-date
 	rebase = true
 ~~~
 
