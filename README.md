@@ -1,6 +1,6 @@
 # .&middot;!
 
-**.&middot;!** is a collection of the dotfiles I use on Mac OS X, Linux (primarily Debian and Ubuntu), and occasionally Cygwin on Windows.
+**.&middot;!** (or **.dotbang**) is a collection of the dotfiles I use on Mac OS X, Linux (primarily Debian and Ubuntu), and occasionally Cygwin on Windows.
 
 
 ## So what?
@@ -53,7 +53,7 @@ Then, down the road, if you see someone else's changes that you want to pull int
        `git checkout «someone you admire»/«‘main’ or some other sub-branch» -- «path(s) to file(s) you'd like»`  
        then stage and commit.
 4. Then push that tish!  
-   _(Because hoarding is assholery.)_
+   _(Because hoardery is assholery.)_
 
 
 ## Local-Only?
