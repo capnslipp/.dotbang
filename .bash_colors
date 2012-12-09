@@ -1,0 +1,43 @@
+THIS_FILE_NAME=`basename "$BASH_SOURCE"`
+[[ $DEBUG_SHELL_LOADING ]] && echo "$THIS_FILE_NAME »"
+
+
+# Foreground Colors
+FGBlack='\[\e[0;30m\]'
+FGRed='\[\e[0;31m\]'
+FGGreen='\[\e[0;32m\]'
+FGYellow='\[\e[0;33m\]'
+FGBlue='\[\e[0;34m\]'
+FGMagenta='\[\e[0;35m\]'
+FGCyan='\[\e[0;36m\]'
+FGLightGray='\[\e[0;37m\]'
+
+# Bright Foreground Colors
+FGBrightBlack='\[\e[1;30m\]'
+FGDarkGray=$FGBrightBlack
+FGBrightRed='\[\e[1;31m\]'
+FGBrightGreen='\[\e[1;32m\]'
+FGBrightYellow='\[\e[1;33m\]'
+FGBrightBlue='\[\e[1;34m\]'
+FGBrightMagenta='\[\e[1;35m\]'
+FGBrightCyan='\[\e[1;36m\]'
+FGWhite='\[\e[1;37m\]'
+
+# Background Colors
+#BGBlack='\[\[\e[1;37m\e[40m\]' # Really? Not the next line?
+BGBlack='\[\e[40m\]'
+BGRed='\[\e[41m\]'
+BGGreen='\[\e[42m\]'
+BGYellow='\[\e[43m\]'
+BGBlue='\[\e[44m\]'
+BGMagenta='\[\e[45m\]'
+BGCyan='\[\e[46m\]'
+BGLightGray='\[\e[47m\]'
+
+# Other Colors
+FGDefault='\[\e[0;39m\]'
+BGDefault='\[\e[49m\]'
+NoColor='\[\e[0m\]'
+
+
+[[ $DEBUG_SHELL_LOADING ]] && echo "$THIS_FILE_NAME «"

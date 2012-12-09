@@ -1,0 +1,12 @@
+THIS_FILE_NAME=`basename "$BASH_SOURCE"`
+[[ $DEBUG_SHELL_LOADING ]] && echo "$THIS_FILE_NAME »"
+
+
+[[ $DEBUG_SHELL_LOADING ]] && echo '	'"Load RVM into a shell session *as a function*"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] &&
+	source "$HOME/.rvm/scripts/rvm"
+
+export PATH="~/bin":$PATH
+
+
+[[ $DEBUG_SHELL_LOADING ]] && echo "$THIS_FILE_NAME «"

@@ -1,0 +1,5 @@
+THIS_FILE_NAME=`basename "$BASH_SOURCE"`
+test $DEBUG_SHELL_LOADING && echo "$THIS_FILE_NAME »"
+
+
+test $DEBUG_SHELL_LOADING && echo "$THIS_FILE_NAME «"
