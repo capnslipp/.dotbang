@@ -97,7 +97,7 @@ Last, back in the intermediate repository, set up a git update hook to prevent t
 ~~~ bash
 #!/bin/sh
 #
-# Hook script that blocks creationg of branches with the form '*/local/*', 'local/*', '*/local', or just 'local'.
+# Hook script that blocks creation of branches with the form '*/local/*', 'local/*', '*/local', or just 'local'.
 # Called by "git receive-pack" with arguments: refname sha1-old sha1-new
 
 # --- Command line
