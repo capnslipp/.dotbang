@@ -27,7 +27,14 @@ THIS_FILE_NAME=`basename "$BASH_SOURCE"`
 [[ -f ~/'.bash_colors' ]] &&
 	source ~/'.bash_colors'
 
-export PS1="${FGBrightRed}\u${FGDarkGray}@${FGLightGray}\h${FGDarkGray}:${FGBlack}${BGYellow}\w${FGDarkGray}${BGDefault}\$${FGDefault} "
+
+[[ $DEBUG_SHELL_LOADING ]] && echo '	'"Load git prompt."
+if [ -f ~/'bin/git-prompt.sh' ]; then
+	source ~/'bin/git-prompt.sh'
+	PS1_GIT="\$(__git_ps1 '${BGDefault} ${BGBlack}${FGWhite}[git: ${FGBrightBlue}%s${FGWhite}]')"
+fi
+
+export PS1="${FGBrightRed}\u${FGDarkGray}@${FGLightGray}\h${FGDarkGray}:${FGBlack}${BGYellow}\w${PS1_GIT}${BGDefault}${FGDarkGray}\$${FGDefault} "
 export PS2="${BFGRed}>${FGDefault} "
 
 
