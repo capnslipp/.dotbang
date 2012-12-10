@@ -1,6 +1,6 @@
 [core]
 	excludesfile = /Users/slipp/".git_excludes"
-	editor = mate -w
+	editor = mate -t text.git-commit -w
 	# ‘tabwidth=13’ because if we show it as a retarded tab size that we would never use, we can be sure that tab indenting isn't being used incorrectly*.
 	# 	* incorrectly (n): Self-centered, stupid, pointless, hanging, retardfectionist.
 	# 		_I had to line up all the charactamers because I'm a retardfectionist._
